@@ -100,6 +100,18 @@ class Media {
   @Index()
   public imdbId?: string;
 
+  @Column({ nullable: true })
+  @Index()
+  public musicBrainzId?: string;
+
+  @Column({ nullable: true })
+  @Index()
+  public foreignArtistId?: string;
+
+  @Column({ nullable: true })
+  @Index()
+  public foreignAlbumId?: string;
+
   @Column({ type: 'int', default: MediaStatus.UNKNOWN })
   public status: MediaStatus;
 
