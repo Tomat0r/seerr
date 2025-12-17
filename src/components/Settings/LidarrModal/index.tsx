@@ -67,7 +67,9 @@ const messages = defineMessages('components.Settings.LidarrModal', {
   selectMetadataProfile: 'Select metadata profile',
   selectRootFolder: 'Select root folder',
   loadingprofiles: 'Loading quality profiles…',
+  loadingmetadataprofiles: 'Loading metadata profiles…',
   testFirstQualityProfiles: 'Test connection to load quality profiles',
+  testFirstMetadataProfiles: 'Test connection to load metadata profiles',
   loadingrootfolders: 'Loading root folders…',
   testFirstRootFolders: 'Test connection to load root folders',
   loadingTags: 'Loading tags…',
@@ -548,10 +550,10 @@ const LidarrModal = ({ onClose, lidarr, onSave }: LidarrModalProps) => {
                       placeholder={
                         !isValidated
                           ? intl.formatMessage(
-                              messages.testFirstQualityProfiles
+                              messages.testFirstMetadataProfiles
                             )
                           : isTesting
-                            ? intl.formatMessage(messages.loadingprofiles)
+                            ? intl.formatMessage(messages.loadingmetadataprofiles)
                             : intl.formatMessage(messages.selectMetadataProfile)
                       }
                     />
