@@ -56,7 +56,7 @@ interface JellyfinMediaFolder {
 }
 
 export interface JellyfinLibrary {
-  type: 'show' | 'movie';
+  type: 'show' | 'movie' | 'music';
   key: string;
   title: string;
   agent: string;
@@ -309,7 +309,6 @@ class JellyfinAPI extends ExternalAPI {
 
   private mapLibraries(mediaFolders: JellyfinMediaFolder[]): JellyfinLibrary[] {
     const excludedTypes = [
-      'music',
       'books',
       'musicvideos',
       'homevideos',
@@ -324,10 +323,17 @@ class JellyfinAPI extends ExternalAPI {
         );
       })
       .map((Item: JellyfinMediaFolder) => {
+        let type: 'movie' | 'show' | 'music' = 'show';
+        if (Item.CollectionType === 'movies') {
+          type = 'movie';
+        } else if (Item.CollectionType === 'music') {
+          type = 'music';
+        }
+        
         return <JellyfinLibrary>{
           key: Item.Id,
           title: Item.Name,
-          type: Item.CollectionType === 'movies' ? 'movie' : 'show',
+          type,
           agent: 'jellyfin',
         };
       });
