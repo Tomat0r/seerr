@@ -14,7 +14,7 @@ import { useToasts } from 'react-toast-notifications';
 import * as Yup from 'yup';
 
 type OptionType = {
-  value: number;
+  value: number | string | undefined;
   label: string;
 };
 

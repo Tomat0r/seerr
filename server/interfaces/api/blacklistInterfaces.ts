@@ -3,7 +3,7 @@ import type { PaginatedResponse } from '@server/interfaces/api/common';
 
 export interface BlacklistItem {
   tmdbId: number;
-  mediaType: 'movie' | 'tv';
+  mediaType: 'movie' | 'tv' | 'music';
   title?: string;
   createdAt?: Date;
   user?: User;

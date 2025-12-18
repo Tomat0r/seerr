@@ -9,7 +9,7 @@ export interface TmdbTitleCardProps {
   id: number;
   tmdbId: number;
   tvdbId?: number;
-  type: 'movie' | 'tv';
+  type: 'movie' | 'tv' | 'music';
   canExpand?: boolean;
   isAddedToWatchlist?: boolean;
   mutateParent?: () => void;
@@ -34,7 +34,11 @@ const TmdbTitleCard = ({
     triggerOnce: true,
   });
   const url =
-    type === 'movie' ? `/api/v1/movie/${tmdbId}` : `/api/v1/tv/${tmdbId}`;
+    type === 'movie'
+      ? `/api/v1/movie/${tmdbId}`
+      : type === 'tv'
+        ? `/api/v1/tv/${tmdbId}`
+        : `/api/v1/music/artist/${tmdbId}`;
   const { data: title, error } = useSWR<MovieDetails | TvDetails>(
     inView ? `${url}` : null
   );
