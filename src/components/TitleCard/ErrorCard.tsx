@@ -57,7 +57,7 @@ const ErrorCard = ({ id, tmdbId, tvdbId, type, canExpand }: ErrorCardProps) => {
                   ? intl.formatMessage(globalMessages.movie)
                   : type === 'tv'
                     ? intl.formatMessage(globalMessages.tvshow)
-                    : 'Music'}
+                    : intl.formatMessage(globalMessages.music)}
               </div>
             </div>
             <div className="pointer-events-none z-40">
@@ -86,7 +86,7 @@ const ErrorCard = ({ id, tmdbId, tvdbId, type, canExpand }: ErrorCardProps) => {
                       ? globalMessages.movie
                       : type === 'tv'
                         ? globalMessages.tvshow
-                        : { id: 'music', defaultMessage: 'Music' }
+                        : globalMessages.music
                   ),
                 })}
               </h1>

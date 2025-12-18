@@ -247,7 +247,7 @@ requestRoutes.get<Record<string, unknown>, RequestResultsResponse>(
       // add canRemove prop if user has permission
       if (req.user?.hasPermission(Permission.MANAGE_REQUESTS)) {
         mappedRequests = mappedRequests.map((r) => {
-          switch (r?.type) {
+          switch (r.type) {
             case MediaType.MOVIE: {
               return {
                 ...r,
