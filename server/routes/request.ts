@@ -234,6 +234,13 @@ requestRoutes.get<Record<string, unknown>, RequestResultsResponse>(
                 ?.profiles?.find((profile) => profile.id === r.profileId)?.name,
             };
           }
+          default: {
+            // For MUSIC and any other types, return as-is without profileName
+            return {
+              ...r,
+              profileName: undefined,
+            };
+          }
         }
       });
 
@@ -261,6 +268,13 @@ requestRoutes.get<Record<string, unknown>, RequestResultsResponse>(
                     server.id ===
                     (r.is4k ? r.media.serviceId4k : r.media.serviceId)
                 ),
+              };
+            }
+            default: {
+              // For MUSIC and any other types, return as-is with canRemove set to false
+              return {
+                ...r,
+                canRemove: false,
               };
             }
           }
