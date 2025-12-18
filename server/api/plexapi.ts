@@ -227,11 +227,11 @@ class PlexAPI {
     options: { addedAt: number } = {
       addedAt: Date.now() - 1000 * 60 * 60,
     },
-    mediaType: 'movie' | 'show'
+    mediaType: 'movie' | 'show' | 'music'
   ): Promise<PlexLibraryItem[]> {
     const response = await this.plexClient.query<PlexLibraryResponse>({
       uri: `/library/sections/${id}/all?type=${
-        mediaType === 'show' ? '4' : '1'
+        mediaType === 'show' ? '4' : mediaType === 'music' ? '8' : '1'
       }&sort=addedAt%3Adesc&addedAt>>=${Math.floor(options.addedAt / 1000)}`,
       extraHeaders: {
         'X-Plex-Container-Start': `0`,

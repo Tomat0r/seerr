@@ -664,6 +664,14 @@ class Settings {
     this.data.sonarr = data;
   }
 
+  get lidarr(): LidarrSettings[] {
+    return this.data.lidarr;
+  }
+
+  set lidarr(data: LidarrSettings[]) {
+    this.data.lidarr = data;
+  }
+
   get public(): PublicSettings {
     return this.data.public;
   }
